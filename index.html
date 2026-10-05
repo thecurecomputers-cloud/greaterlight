@@ -1,0 +1,3979 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>The Greater Light Community</title>
+
+<meta name="description"
+content="The Greater Light Community — Faith, Service, Education and Community.">
+
+<style>
+
+/* =========================================================
+   THE GREATER LIGHT COMMUNITY
+   SINGLE FILE WEBSITE
+   HTML + CSS + JAVASCRIPT
+========================================================= */
+
+:root {
+    --navy: #06264a;
+    --blue: #0d4775;
+    --light-blue: #eef6fb;
+    --gold: #d8b45b;
+    --gold-light: #f4df9b;
+    --white: #ffffff;
+    --cream: #fffdf7;
+    --text: #35485d;
+    --muted: #718096;
+    --border: #e6edf3;
+    --shadow: 0 20px 60px rgba(6, 38, 74, .12);
+    --radius: 18px;
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family:
+        "Segoe UI",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    color: var(--text);
+    background: var(--white);
+    line-height: 1.7;
+
+    overflow-x: hidden;
+}
+
+img {
+    width: 100%;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    font-family: inherit;
+}
+
+.container {
+    width: min(1180px, 92%);
+    margin: auto;
+}
+
+
+/* =========================================================
+   LOADING SCREEN
+========================================================= */
+
+.loader {
+    position: fixed;
+    inset: 0;
+    background: var(--navy);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 9999;
+
+    transition:
+        opacity .6s ease,
+        visibility .6s ease;
+}
+
+.loader.hide {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader-content {
+    text-align: center;
+    color: white;
+}
+
+.loader-star {
+    color: var(--gold);
+    font-size: 50px;
+
+    animation: pulse 1.5s infinite;
+}
+
+.loader-content h2 {
+    margin-top: 10px;
+    letter-spacing: 3px;
+}
+
+.loader-content p {
+    color: #c7d5e4;
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    z-index: 1000;
+
+    background:
+        rgba(4, 29, 55, .88);
+
+    backdrop-filter: blur(14px);
+
+    border-bottom:
+        1px solid rgba(255,255,255,.1);
+
+    transition: .35s;
+}
+
+.navbar.scrolled {
+    background:
+        rgba(4, 29, 55, .98);
+
+    box-shadow:
+        0 8px 35px rgba(0,0,0,.18);
+}
+
+.nav-container {
+    min-height: 78px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    color: white;
+
+    font-size: 14px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+.logo-star {
+    color: var(--gold);
+    font-size: 25px;
+}
+
+.logo-text strong {
+    display: block;
+    color: var(--gold);
+    font-size: 16px;
+}
+
+.logo-text small {
+    display: block;
+    color: #c8d5e2;
+
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-links a {
+    position: relative;
+
+    color: #f5f8fb;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    transition: .3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--gold);
+}
+
+.nav-links a.active::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: -10px;
+
+    height: 2px;
+
+    background: var(--gold);
+}
+
+.menu-btn {
+    display: none;
+
+    width: 44px;
+    height: 44px;
+
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 10px;
+
+    background: transparent;
+    color: white;
+
+    font-size: 22px;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    position: relative;
+
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #082b50,
+            #0c527e
+        );
+
+    background-size: cover;
+    background-position: center;
+
+    transition:
+        background-image 1s ease;
+
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            rgba(255,255,255,.14),
+            transparent 35%
+        );
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(3,25,49,.82),
+            rgba(4,37,69,.58),
+            rgba(3,24,47,.75)
+        );
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+
+    width: min(900px, 92%);
+
+    padding-top: 80px;
+
+    animation:
+        heroIn 1.2s ease;
+}
+
+.hero-label {
+    display: inline-block;
+
+    color: var(--gold-light);
+
+    font-size: 13px;
+    font-weight: 800;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 22px;
+}
+
+.hero-welcome {
+    font-size: 18px;
+    letter-spacing: 7px;
+    font-weight: 500;
+
+    color: #f2f5f8;
+}
+
+.hero h1 {
+    margin-top: 10px;
+
+    font-size:
+        clamp(48px, 8vw, 100px);
+
+    line-height: .92;
+
+    letter-spacing: 4px;
+
+    font-weight: 950;
+
+    text-shadow:
+        0 8px 30px rgba(0,0,0,.35);
+}
+
+.hero h1 span {
+    color: var(--gold-light);
+}
+
+.hero-description {
+    max-width: 720px;
+
+    margin: 30px auto;
+
+    color: #edf3f8;
+
+    font-size: 19px;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+
+    margin-top: 30px;
+}
+
+.btn {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 14px 27px;
+
+    border-radius: 50px;
+
+    font-weight: 700;
+    font-size: 14px;
+
+    transition:
+        transform .3s,
+        box-shadow .3s,
+        background .3s;
+}
+
+.btn:hover {
+    transform: translateY(-4px);
+}
+
+.btn-gold {
+    background:
+        linear-gradient(
+            135deg,
+            var(--gold-light),
+            var(--gold)
+        );
+
+    color: var(--navy);
+
+    box-shadow:
+        0 10px 30px rgba(216,180,91,.25);
+}
+
+.btn-gold:hover {
+    box-shadow:
+        0 15px 40px rgba(216,180,91,.35);
+}
+
+.btn-outline {
+    color: white;
+
+    border: 1px solid rgba(255,255,255,.6);
+
+    background:
+        rgba(255,255,255,.08);
+
+    backdrop-filter: blur(5px);
+}
+
+.btn-outline:hover {
+    background: white;
+    color: var(--navy);
+}
+
+.hero-verse {
+    max-width: 650px;
+
+    margin: 38px auto 0;
+
+    padding-top: 20px;
+
+    border-top:
+        1px solid rgba(255,255,255,.25);
+
+    font-style: italic;
+
+    color: #e7eef5;
+}
+
+.hero-verse strong {
+    display: block;
+
+    margin-top: 7px;
+
+    color: var(--gold-light);
+
+    font-style: normal;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   FLOATING HERO DECORATION
+========================================================= */
+
+.light-orb {
+    position: absolute;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(244,223,155,.2),
+            transparent 70%
+        );
+
+    pointer-events: none;
+}
+
+.orb-one {
+    width: 300px;
+    height: 300px;
+
+    top: 10%;
+    left: -120px;
+}
+
+.orb-two {
+    width: 400px;
+    height: 400px;
+
+    right: -180px;
+    bottom: -100px;
+}
+
+
+/* =========================================================
+   WORD SECTION
+========================================================= */
+
+.word-section {
+    position: relative;
+
+    padding: 65px 0;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--navy),
+            var(--blue)
+        );
+
+    color: white;
+}
+
+.word-section::before {
+    content: "✦";
+
+    position: absolute;
+
+    top: 15px;
+    left: 5%;
+
+    color: rgba(255,255,255,.08);
+
+    font-size: 100px;
+}
+
+.word-label {
+    color: var(--gold-light);
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 4px;
+}
+
+.word-section h2 {
+    margin: 8px 0;
+
+    font-size: 42px;
+
+    transition: .4s;
+}
+
+.word-section p {
+    color: #dbe7f1;
+
+    transition: .4s;
+}
+
+.word-section strong {
+    display: block;
+
+    margin-top: 8px;
+
+    color: var(--gold-light);
+}
+
+.word-controls {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    margin-top: 25px;
+}
+
+.word-controls button {
+    width: 38px;
+    height: 38px;
+
+    border: 1px solid rgba(255,255,255,.25);
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.08);
+
+    color: white;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+.word-controls button:hover {
+    background: var(--gold);
+    color: var(--navy);
+}
+
+
+/* =========================================================
+   GENERAL SECTIONS
+========================================================= */
+
+.section {
+    padding: 100px 0;
+}
+
+.section-soft {
+    background: #f7fafc;
+}
+
+.section-cream {
+    background: var(--cream);
+}
+
+.section-heading {
+    max-width: 780px;
+}
+
+.section-heading.center {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.section-heading .eyebrow {
+    color: #ad832b;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 4px;
+}
+
+.section-heading h2 {
+    color: var(--navy);
+
+    font-size:
+        clamp(34px, 5vw, 52px);
+
+    line-height: 1.15;
+
+    margin-top: 8px;
+}
+
+.section-heading p {
+    color: var(--muted);
+
+    font-size: 17px;
+}
+
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
+.about-intro {
+    margin-top: 25px;
+
+    max-width: 800px;
+
+    font-size: 18px;
+
+    color: var(--muted);
+}
+
+.stats {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    margin-top: 55px;
+
+    background: white;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow);
+
+    overflow: hidden;
+}
+
+.stat {
+    padding: 32px 20px;
+
+    text-align: center;
+
+    border-right:
+        1px solid var(--border);
+}
+
+.stat:last-child {
+    border-right: none;
+}
+
+.stat strong {
+    display: block;
+
+    color: var(--navy);
+
+    font-size: 40px;
+}
+
+.stat span {
+    color: var(--muted);
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   SERVICES
+========================================================= */
+
+.service-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 20px;
+
+    margin-top: 50px;
+}
+
+.service-card {
+    position: relative;
+
+    padding: 32px 26px;
+
+    background: white;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: var(--radius);
+
+    box-shadow:
+        0 8px 30px rgba(6,38,74,.05);
+
+    transition:
+        transform .35s,
+        box-shadow .35s;
+}
+
+.service-card:hover {
+    transform: translateY(-9px);
+
+    box-shadow:
+        0 20px 45px rgba(6,38,74,.12);
+}
+
+.service-icon {
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 16px;
+
+    background: #f8efd3;
+
+    color: #98701d;
+
+    font-size: 25px;
+
+    margin-bottom: 20px;
+}
+
+.service-card h3 {
+    color: var(--navy);
+
+    margin-bottom: 10px;
+}
+
+.service-card p {
+    color: var(--muted);
+
+    font-size: 14px;
+
+    margin-bottom: 20px;
+}
+
+.service-card a {
+    color: #a77d24;
+
+    font-weight: 700;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   MISSION / VISION
+========================================================= */
+
+.mission-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 25px;
+
+    margin-top: 50px;
+}
+
+.mission-card {
+    position: relative;
+
+    padding: 42px;
+
+    border-radius: var(--radius);
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            #f7fafc,
+            #ffffff
+        );
+
+    border:
+        1px solid var(--border);
+}
+
+.mission-card::after {
+    content: "✦";
+
+    position: absolute;
+
+    right: 20px;
+    bottom: -30px;
+
+    color: rgba(216,180,91,.12);
+
+    font-size: 150px;
+}
+
+.mission-number {
+    color: var(--gold);
+
+    font-size: 38px;
+
+    font-weight: 900;
+}
+
+.mission-card small {
+    color: #a67b22;
+
+    font-weight: 800;
+
+    letter-spacing: 3px;
+}
+
+.mission-card h3 {
+    color: var(--navy);
+
+    font-size: 27px;
+
+    line-height: 1.3;
+
+    margin: 10px 0;
+}
+
+.mission-card p {
+    color: var(--muted);
+
+    position: relative;
+    z-index: 2;
+}
+
+.values {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    margin-top: 45px;
+}
+
+.value {
+    padding: 12px 20px;
+
+    border-radius: 50px;
+
+    background: #f8efd3;
+
+    color: #7e5e19;
+
+    font-size: 13px;
+
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   LEADER
+========================================================= */
+
+.leader-section {
+    background:
+        linear-gradient(
+            135deg,
+            #f5f9fc,
+            #ffffff
+        );
+}
+
+.leader-grid {
+    display: grid;
+
+    grid-template-columns:
+        .85fr 1.15fr;
+
+    gap: 70px;
+
+    align-items: center;
+}
+
+.leader-photo {
+    position: relative;
+
+    max-width: 480px;
+}
+
+.leader-photo::before {
+    content: "";
+
+    position: absolute;
+
+    top: -15px;
+    left: -15px;
+
+    width: 100%;
+    height: 100%;
+
+    border:
+        2px solid var(--gold);
+
+    border-radius: 25px;
+
+    z-index: 0;
+}
+
+.leader-photo img {
+    position: relative;
+    z-index: 2;
+
+    border-radius: 22px;
+
+    box-shadow: var(--shadow);
+}
+
+.leader-badge {
+    position: absolute;
+
+    z-index: 3;
+
+    bottom: 25px;
+    left: 25px;
+
+    padding: 10px 18px;
+
+    background: var(--gold);
+
+    color: var(--navy);
+
+    border-radius: 30px;
+
+    font-size: 11px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+}
+
+.leader-content .eyebrow {
+    color: #ad832b;
+
+    font-weight: 800;
+
+    letter-spacing: 4px;
+
+    font-size: 12px;
+}
+
+.leader-content h2 {
+    color: var(--navy);
+
+    font-size: 50px;
+
+    line-height: 1.1;
+}
+
+.leader-content h3 {
+    color: var(--blue);
+
+    font-size: 26px;
+
+    margin-top: 18px;
+}
+
+.leader-role {
+    color: #aa7f25;
+
+    font-weight: 700;
+}
+
+.leader-content p {
+    color: var(--muted);
+
+    margin: 16px 0;
+}
+
+
+/* =========================================================
+   PREACHING
+========================================================= */
+
+.preaching {
+    position: relative;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #052747,
+            #0c527d
+        );
+
+    overflow: hidden;
+}
+
+.preaching::before {
+    content: "“";
+
+    position: absolute;
+
+    top: -70px;
+    right: 7%;
+
+    color: rgba(255,255,255,.05);
+
+    font-size: 300px;
+
+    font-family: Georgia;
+}
+
+.message-card {
+    position: relative;
+    z-index: 2;
+
+    max-width: 850px;
+
+    margin: 50px auto 0;
+
+    padding: 55px;
+
+    text-align: center;
+
+    background:
+        rgba(255,255,255,.08);
+
+    border:
+        1px solid rgba(255,255,255,.16);
+
+    border-radius: 25px;
+
+    backdrop-filter: blur(10px);
+}
+
+.message-card .eyebrow {
+    color: var(--gold-light);
+
+    letter-spacing: 4px;
+
+    font-size: 12px;
+
+    font-weight: 800;
+}
+
+.message-card h3 {
+    font-size: 42px;
+
+    margin: 12px 0;
+}
+
+.message-card p {
+    max-width: 650px;
+
+    margin: auto;
+
+    color: #d8e5ef;
+
+    font-size: 17px;
+}
+
+.message-card strong {
+    display: block;
+
+    margin: 20px;
+
+    color: var(--gold-light);
+}
+
+
+/* =========================================================
+   GALLERY
+========================================================= */
+
+.gallery-grid {
+    display: grid;
+
+    grid-template-columns:
+        1.2fr .8fr .8fr;
+
+    gap: 18px;
+
+    margin-top: 50px;
+}
+
+.gallery-item {
+    position: relative;
+
+    height: 360px;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+
+    cursor: pointer;
+
+    background: #dfe8ef;
+}
+
+.gallery-item:nth-child(2),
+.gallery-item:nth-child(3) {
+    height: 360px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform .6s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.08);
+}
+
+.gallery-caption {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    padding: 50px 22px 22px;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            transparent,
+            rgba(0,0,0,.78)
+        );
+}
+
+
+/* =========================================================
+   BOOK
+========================================================= */
+
+.book-section {
+    background:
+        linear-gradient(
+            135deg,
+            #fffdf7,
+            #f8f2df
+        );
+}
+
+.book-grid {
+    display: grid;
+
+    grid-template-columns:
+        .8fr 1.2fr;
+
+    gap: 70px;
+
+    align-items: center;
+}
+
+.book-cover {
+    min-height: 470px;
+
+    padding: 50px 35px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    color: white;
+
+    border-radius: 15px;
+
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            #276b91,
+            transparent 30%
+        ),
+        linear-gradient(
+            145deg,
+            #052747,
+            #0c4f78
+        );
+
+    box-shadow:
+        20px 25px 60px rgba(6,38,74,.2);
+}
+
+.book-cover small {
+    color: var(--gold-light);
+
+    letter-spacing: 3px;
+}
+
+.book-cover h2 {
+    font-family: Georgia, serif;
+
+    font-size: 38px;
+
+    line-height: 1.05;
+
+    margin: 35px 0 20px;
+}
+
+.book-cover p {
+    color: #dbe7f0;
+}
+
+.book-content .eyebrow {
+    color: #a47a23;
+
+    font-size: 12px;
+
+    letter-spacing: 4px;
+
+    font-weight: 800;
+}
+
+.book-content h2 {
+    color: var(--navy);
+
+    font-size: 48px;
+
+    line-height: 1.1;
+
+    margin: 8px 0;
+}
+
+.book-content p {
+    color: var(--muted);
+
+    font-size: 17px;
+
+    margin: 15px 0;
+}
+
+.book-price {
+    color: #a67c24;
+
+    font-size: 32px;
+
+    font-weight: 900;
+
+    margin: 25px 0;
+}
+
+
+/* =========================================================
+   EDUCATION
+========================================================= */
+
+.education-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+
+    margin-top: 50px;
+}
+
+.education-card {
+    padding: 35px;
+
+    background: white;
+
+    border-radius: var(--radius);
+
+    border: 1px solid var(--border);
+
+    transition: .3s;
+}
+
+.education-card:hover {
+    transform: translateY(-6px);
+
+    box-shadow: var(--shadow);
+}
+
+.education-number {
+    color: var(--gold);
+
+    font-size: 30px;
+
+    font-weight: 900;
+}
+
+.education-card h3 {
+    color: var(--navy);
+
+    margin: 10px 0;
+}
+
+.education-card p {
+    color: var(--muted);
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   VOLUNTEER
+========================================================= */
+
+.volunteer {
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #092d50,
+            #063c63
+        );
+
+    text-align: center;
+}
+
+.volunteer .section-heading h2 {
+    color: white;
+}
+
+.volunteer .section-heading p {
+    color: #d7e4ed;
+}
+
+.volunteer-list {
+    max-width: 800px;
+
+    margin: 35px auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 12px;
+
+    text-align: left;
+}
+
+.volunteer-list div {
+    padding: 12px 18px;
+
+    border-radius: 10px;
+
+    background:
+        rgba(255,255,255,.07);
+
+    color: #e6eef4;
+}
+
+
+/* =========================================================
+   ADVERTS
+========================================================= */
+
+.advert-card {
+    max-width: 760px;
+
+    margin: 50px auto 0;
+
+    padding: 50px;
+
+    text-align: center;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fffdf7,
+            #f7f0dc
+        );
+
+    border:
+        1px solid #eadcae;
+
+    box-shadow: var(--shadow);
+}
+
+.advert-icon {
+    width: 70px;
+    height: 70px;
+
+    margin: auto;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #f3e3ac;
+
+    font-size: 30px;
+}
+
+.advert-card h3 {
+    color: var(--navy);
+
+    font-size: 28px;
+
+    margin: 15px 0 8px;
+}
+
+.advert-card p {
+    color: var(--muted);
+}
+
+
+/* =========================================================
+   TESTIMONIALS
+========================================================= */
+
+.testimonial-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+
+    margin-top: 50px;
+}
+
+.testimonial {
+    padding: 35px;
+
+    text-align: center;
+
+    background: white;
+
+    border-radius: var(--radius);
+
+    border:
+        1px solid var(--border);
+
+    transition: .4s;
+}
+
+.testimonial.active {
+    transform: translateY(-7px);
+
+    border-color: var(--gold);
+
+    box-shadow: var(--shadow);
+}
+
+.stars {
+    color: var(--gold);
+
+    letter-spacing: 3px;
+
+    margin-bottom: 15px;
+}
+
+.testimonial p {
+    color: var(--muted);
+
+    font-style: italic;
+}
+
+
+/* =========================================================
+   ONLINE
+========================================================= */
+
+.online {
+    padding: 85px 20px;
+
+    color: white;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #075b6d,
+            #062d51
+        );
+}
+
+.online .eyebrow {
+    color: var(--gold-light);
+
+    font-size: 12px;
+
+    letter-spacing: 4px;
+
+    font-weight: 800;
+}
+
+.online h2 {
+    font-size: 43px;
+
+    margin: 8px 0;
+}
+
+.online p {
+    max-width: 650px;
+
+    margin: 0 auto 25px;
+
+    color: #d9e7ef;
+}
+
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+
+    margin-top: 50px;
+}
+
+.contact-card {
+    padding: 35px 25px;
+
+    text-align: center;
+
+    background: #f7fafc;
+
+    border-radius: var(--radius);
+
+    border:
+        1px solid var(--border);
+}
+
+.contact-icon {
+    width: 55px;
+    height: 55px;
+
+    margin: auto auto 15px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #f8efd3;
+
+    color: #9d7523;
+
+    font-size: 22px;
+}
+
+.contact-card h3 {
+    color: var(--navy);
+}
+
+.contact-card p,
+.contact-card a {
+    color: var(--muted);
+
+    font-size: 14px;
+}
+
+.contact-card a:hover {
+    color: #a87e25;
+}
+
+.socials {
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-top: 30px;
+}
+
+.socials a {
+    padding: 10px 18px;
+
+    color: white;
+
+    background: var(--navy);
+
+    border-radius: 50px;
+
+    font-size: 13px;
+
+    transition: .3s;
+}
+
+.socials a:hover {
+    background: var(--gold);
+
+    color: var(--navy);
+}
+
+
+/* =========================================================
+   PRAYER
+========================================================= */
+
+.prayer {
+    padding: 90px 20px;
+
+    text-align: center;
+
+    color: var(--navy);
+
+    background:
+        linear-gradient(
+            135deg,
+            #e8cb75,
+            #f5e4a9
+        );
+}
+
+.prayer .eyebrow {
+    font-weight: 800;
+
+    letter-spacing: 4px;
+
+    font-size: 12px;
+}
+
+.prayer h2 {
+    font-family: Georgia, serif;
+
+    font-size: 43px;
+
+    margin: 10px 0;
+}
+
+.prayer p {
+    margin-bottom: 25px;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    padding: 55px 20px;
+
+    background: #031b32;
+
+    text-align: center;
+
+    color: white;
+}
+
+.footer-logo {
+    color: var(--gold-light);
+
+    font-size: 20px;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+}
+
+.footer-tagline {
+    color: #aebfce;
+
+    margin-top: 8px;
+}
+
+.footer-links {
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 20px;
+
+    margin: 25px 0;
+}
+
+.footer-links a {
+    color: #d9e4ed;
+
+    font-size: 13px;
+}
+
+.footer-links a:hover {
+    color: var(--gold);
+}
+
+.copyright {
+    padding-top: 20px;
+
+    border-top:
+        1px solid rgba(255,255,255,.1);
+
+    color: #8296a8;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   FLOATING WHATSAPP
+========================================================= */
+
+.whatsapp {
+    position: fixed;
+
+    right: 22px;
+    bottom: 22px;
+
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #25d366;
+
+    color: white;
+
+    font-size: 27px;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.25);
+
+    z-index: 999;
+
+    transition: .3s;
+
+    animation:
+        whatsappPulse 2.5s infinite;
+}
+
+.whatsapp:hover {
+    transform: scale(1.1);
+}
+
+
+/* =========================================================
+   BACK TO TOP
+========================================================= */
+
+.back-top {
+    position: fixed;
+
+    right: 24px;
+    bottom: 92px;
+
+    width: 43px;
+    height: 43px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: var(--navy);
+
+    color: white;
+
+    cursor: pointer;
+
+    z-index: 998;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(10px);
+
+    transition: .3s;
+}
+
+.back-top.show {
+    opacity: 1;
+    visibility: visible;
+
+    transform: translateY(0);
+}
+
+.back-top:hover {
+    background: var(--gold);
+
+    color: var(--navy);
+}
+
+
+/* =========================================================
+   LIGHTBOX
+========================================================= */
+
+.lightbox {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 5000;
+
+    background:
+        rgba(0,0,0,.93);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 25px;
+}
+
+.lightbox img {
+    max-width: 92%;
+    max-height: 88vh;
+
+    object-fit: contain;
+
+    border-radius: 8px;
+}
+
+.lightbox-close {
+    position: absolute;
+
+    top: 20px;
+    right: 28px;
+
+    color: white;
+
+    font-size: 45px;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   ANIMATION
+========================================================= */
+
+.reveal {
+    opacity: 0;
+
+    transform: translateY(35px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+@keyframes heroIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+@keyframes pulse {
+
+    0%,100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.12);
+    }
+
+}
+
+@keyframes whatsappPulse {
+
+    0% {
+        box-shadow:
+            0 0 0 0 rgba(37,211,102,.45);
+    }
+
+    70% {
+        box-shadow:
+            0 0 0 14px rgba(37,211,102,0);
+    }
+
+    100% {
+        box-shadow:
+            0 0 0 0 rgba(37,211,102,0);
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:1050px) {
+
+    .nav-links {
+        gap: 12px;
+    }
+
+    .nav-links a {
+        font-size: 11px;
+    }
+
+    .service-grid {
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .leader-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .leader-photo {
+        margin: auto;
+    }
+
+}
+
+
+@media(max-width:800px) {
+
+    .menu-btn {
+        display: block;
+    }
+
+    .nav-links {
+        position: absolute;
+
+        top: 78px;
+        left: 0;
+
+        width: 100%;
+
+        display: none;
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 0;
+
+        background:
+            rgba(4,29,55,.99);
+
+        border-top:
+            1px solid rgba(255,255,255,.1);
+    }
+
+    .nav-links.open {
+        display: flex;
+    }
+
+    .nav-links a {
+        padding: 15px 25px;
+
+        border-bottom:
+            1px solid rgba(255,255,255,.07);
+
+        font-size: 14px;
+    }
+
+    .nav-links a.active::after {
+        display: none;
+    }
+
+    .stats {
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .stat:nth-child(2) {
+        border-right: none;
+    }
+
+    .stat:nth-child(1),
+    .stat:nth-child(2) {
+        border-bottom:
+            1px solid var(--border);
+    }
+
+    .mission-grid,
+    .education-grid,
+    .testimonial-grid,
+    .contact-grid,
+    .book-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-item,
+    .gallery-item:nth-child(2),
+    .gallery-item:nth-child(3) {
+        height: 300px;
+    }
+
+    .book-cover {
+        max-width: 500px;
+        margin: auto;
+    }
+
+}
+
+
+@media(max-width:560px) {
+
+    .section {
+        padding: 75px 0;
+    }
+
+    .hero {
+        min-height: 760px;
+    }
+
+    .hero h1 {
+        font-size: 45px;
+
+        letter-spacing: 2px;
+    }
+
+    .hero-welcome {
+        font-size: 14px;
+
+        letter-spacing: 4px;
+    }
+
+    .hero-description {
+        font-size: 16px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+
+        align-items: center;
+    }
+
+    .hero-buttons .btn {
+        width: 220px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .stat {
+        border-right: none !important;
+
+        border-bottom:
+            1px solid var(--border);
+    }
+
+    .stat:last-child {
+        border-bottom: none;
+    }
+
+    .service-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .mission-card {
+        padding: 30px;
+    }
+
+    .message-card {
+        padding: 35px 20px;
+    }
+
+    .message-card h3 {
+        font-size: 31px;
+    }
+
+    .volunteer-list {
+        grid-template-columns: 1fr;
+    }
+
+    .book-content h2 {
+        font-size: 36px;
+    }
+
+    .prayer h2,
+    .online h2 {
+        font-size: 32px;
+    }
+
+    .whatsapp {
+        width: 53px;
+        height: 53px;
+
+        right: 16px;
+        bottom: 16px;
+    }
+
+    .back-top {
+        right: 20px;
+        bottom: 80px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     LOADING SCREEN
+===================================================== -->
+
+<div class="loader" id="loader">
+
+    <div class="loader-content">
+
+        <div class="loader-star">✦</div>
+
+        <h2>THE GREATER LIGHT</h2>
+
+        <p>A Community of Light</p>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
+
+<header class="navbar" id="navbar">
+
+    <div class="container nav-container">
+
+        <a href="#home" class="logo">
+
+            <span class="logo-star">✦</span>
+
+            <span class="logo-text">
+                THE GREATER
+                <strong>LIGHT COMMUNITY</strong>
+                <small>FAITH • SERVICE • EDUCATION</small>
+            </span>
+
+        </a>
+
+
+        <button class="menu-btn" id="menuBtn">
+            ☰
+        </button>
+
+
+        <nav class="nav-links" id="navLinks">
+
+            <a href="#home">Home</a>
+
+            <a href="#about">Mission & Vision</a>
+
+            <a href="#preaching">Preaching</a>
+
+            <a href="#gallery">Pictures</a>
+
+            <a href="#books">Books</a>
+
+            <a href="#education">Education</a>
+
+            <a href="#volunteer">Volunteer</a>
+
+            <a href="#adverts">Adverts</a>
+
+            <a href="#contact">Contact</a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero" id="home">
+
+    <div class="hero-overlay"></div>
+
+    <div class="light-orb orb-one"></div>
+    <div class="light-orb orb-two"></div>
+
+
+    <div class="hero-content">
+
+        <div class="hero-label">
+            ✦ A COMMUNITY OF LIGHT ✦
+        </div>
+
+        <p class="hero-welcome">
+            WELCOME TO
+        </p>
+
+        <h1>
+            GREATER LIGHT<br>
+            <span>COMMUNITY</span>
+        </h1>
+
+        <p class="hero-description">
+            A place where faith grows, lives are transformed
+            and the light of Christ shines through service.
+        </p>
+
+
+        <div class="hero-buttons">
+
+            <a href="#preaching" class="btn btn-gold">
+                Today's Message →
+            </a>
+
+            <a href="#about" class="btn btn-outline">
+                Our Mission
+            </a>
+
+        </div>
+
+
+        <blockquote class="hero-verse">
+
+            “Let your light so shine before men...”
+
+            <strong>
+                Matthew 5:16
+            </strong>
+
+        </blockquote>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     WORD FOR YOU
+===================================================== -->
+
+<section class="word-section">
+
+    <div class="container">
+
+        <div class="word-label">
+            ✦ A WORD FOR YOU ✦
+        </div>
+
+        <h2 id="wordTitle">
+            Fear Not
+        </h2>
+
+        <p id="wordText">
+            Casting all anxieties on Him because He cares.
+        </p>
+
+        <strong id="wordVerse">
+            1 Peter 5:7
+        </strong>
+
+
+        <div class="word-controls">
+
+            <button id="prevWord">
+                ❮
+            </button>
+
+            <button id="nextWord">
+                ❯
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     ABOUT
+===================================================== -->
+
+<section class="section" id="about">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span class="eyebrow">
+                WELCOME TO OUR COMMUNITY
+            </span>
+
+            <h2>
+                Shining Light,<br>
+                Touching Lives
+            </h2>
+
+            <p class="about-intro">
+                The Greater Light is a community committed to
+                building people, transforming lives and serving
+                society through faith, education and selfless service.
+            </p>
+
+        </div>
+
+
+        <div class="stats">
+
+            <div class="stat">
+                <strong data-count="500">0+</strong>
+                <span>Members</span>
+            </div>
+
+            <div class="stat">
+                <strong data-count="10">0+</strong>
+                <span>Years of Ministry</span>
+            </div>
+
+            <div class="stat">
+                <strong data-count="50">0+</strong>
+                <span>Outreach Programs</span>
+            </div>
+
+            <div class="stat">
+                <strong data-count="500">0+</strong>
+                <span>Lives Touched</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     WHAT WE DO
+===================================================== -->
+
+<section class="section section-soft">
+
+    <div class="container">
+
+        <div class="section-heading center">
+
+            <span class="eyebrow">
+                WHAT WE DO
+            </span>
+
+            <h2>
+                Growing Together in Light
+            </h2>
+
+        </div>
+
+
+        <div class="service-grid">
+
+
+            <div class="service-card reveal">
+
+                <div class="service-icon">✦</div>
+
+                <h3>
+                    Daily Preaching
+                </h3>
+
+                <p>
+                    Messages that inspire, encourage and strengthen
+                    your walk with Christ.
+                </p>
+
+                <a href="#preaching">
+                    Explore →
+                </a>
+
+            </div>
+
+
+            <div class="service-card reveal">
+
+                <div class="service-icon">📖</div>
+
+                <h3>
+                    Church Bookshop
+                </h3>
+
+                <p>
+                    Books and resources designed for spiritual growth
+                    and personal development.
+                </p>
+
+                <a href="#books">
+                    View Books →
+                </a>
+
+            </div>
+
+
+            <div class="service-card reveal">
+
+                <div class="service-icon">🎓</div>
+
+                <h3>
+                    Education
+                </h3>
+
+                <p>
+                    Opportunities to learn, develop skills and grow
+                    in knowledge.
+                </p>
+
+                <a href="#education">
+                    Learn More →
+                </a>
+
+            </div>
+
+
+            <div class="service-card reveal">
+
+                <div class="service-icon">🤝</div>
+
+                <h3>
+                    Volunteer
+                </h3>
+
+                <p>
+                    Serve with purpose and become part of transforming
+                    lives and communities.
+                </p>
+
+                <a href="#volunteer">
+                    Get Involved →
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     MISSION & VISION
+===================================================== -->
+
+<section class="section section-cream">
+
+    <div class="container">
+
+        <div class="section-heading center">
+
+            <span class="eyebrow">
+                WHO WE ARE
+            </span>
+
+            <h2>
+                Our Mission & Vision
+            </h2>
+
+        </div>
+
+
+        <div class="mission-grid">
+
+
+            <div class="mission-card reveal">
+
+                <div class="mission-number">
+                    01
+                </div>
+
+                <small>
+                    OUR MISSION
+                </small>
+
+                <h3>
+                    Building People.<br>
+                    Transforming Society.
+                </h3>
+
+                <p>
+                    Building people who know their worth in Christ,
+                    maximizing potential to transform society and
+                    expand God's Kingdom.
+                </p>
+
+            </div>
+
+
+            <div class="mission-card reveal">
+
+                <div class="mission-number">
+                    02
+                </div>
+
+                <small>
+                    OUR VISION
+                </small>
+
+                <h3>
+                    Raising a Generation of Light
+                </h3>
+
+                <p>
+                    To raise a generation of people who know their
+                    worth in Christ and shine as LIGHT, transforming
+                    society and expanding God's Kingdom through
+                    purity, integrity and selfless service.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="values">
+
+            <div class="value">
+                01 • PURITY
+            </div>
+
+            <div class="value">
+                02 • INTEGRITY
+            </div>
+
+            <div class="value">
+                03 • SELFLESS SERVICE
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     LEADER
+===================================================== -->
+
+<section class="section leader-section">
+
+    <div class="container leader-grid">
+
+
+        <div class="leader-photo reveal">
+
+            <img
+                src="pe.jpeg"
+                alt="Pastor Motale Peter Ndumbe">
+
+            <div class="leader-badge">
+                VISION BEARER
+            </div>
+
+        </div>
+
+
+        <div class="leader-content reveal">
+
+            <span class="eyebrow">
+                THE GREATER LIGHT
+            </span>
+
+            <h2>
+                Our Leader
+            </h2>
+
+            <h3>
+                Pastor Motale Peter Ndumbe
+            </h3>
+
+            <p class="leader-role">
+                Educator • Youth Coach • Author
+            </p>
+
+            <p>
+                Pastor Motale Peter Ndumbe is the visionary behind
+                The Greater Light Community, a movement dedicated
+                to touching the lives of young people and raising
+                men and women committed to true and selfless service.
+            </p>
+
+            <p>
+                Through education, mentorship and Christian values,
+                the ministry seeks to project Jesus Christ and
+                contribute to the expansion of God's Kingdom.
+            </p>
+
+            <a href="#contact" class="btn btn-gold">
+                Read Leader's Message →
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PREACHING
+===================================================== -->
+
+<section class="section preaching" id="preaching">
+
+    <div class="container">
+
+        <div class="section-heading center">
+
+            <span class="eyebrow" style="color:#f4df9b;">
+                WORD FOR TODAY
+            </span>
+
+            <h2 style="color:white;">
+                Today's Message
+            </h2>
+
+        </div>
+
+
+        <div class="message-card reveal">
+
+            <span class="eyebrow">
+                TODAY'S MESSAGE
+            </span>
+
+            <h3>
+                Walking in the Light
+            </h3>
+
+            <p>
+                Allow the Word of God to guide your steps,
+                strengthen your faith and illuminate your
+                daily journey.
+            </p>
+
+            <strong>
+                1 John 1:7
+            </strong>
+
+            <a
+                href="https://whatsapp.com/channel/0029Vb8M8TTEQIaih9YWH235"
+                target="_blank"
+                class="btn btn-gold">
+
+                Join Our WhatsApp Channel →
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     GALLERY
+===================================================== -->
+
+<section class="section" id="gallery">
+
+    <div class="container">
+
+        <div class="section-heading center">
+
+            <span class="eyebrow">
+                OUR COMMUNITY
+            </span>
+
+            <h2>
+                Worship & Fellowship
+            </h2>
+
+        </div>
+
+
+        <div class="gallery-grid">
+
+
+            <div class="gallery-item reveal">
+
+                <img
+                    src="mid (1).jpeg"
+                    alt="Worship and fellowship">
+
+                <div class="gallery-caption">
+                    <strong>
+                        Worship & Fellowship
+                    </strong>
+                </div>
+
+            </div>
+
+
+            <div class="gallery-item reveal">
+
+                <img
+                    src="mid (2).jpeg"
+                    alt="The Greater Light Community">
+
+                <div class="gallery-caption">
+                    <strong>
+                        Community
+                    </strong>
+                </div>
+
+            </div>
+
+
+            <div class="gallery-item reveal">
+
+                <img
+                    src="gallery-placeholder.svg"
+                    alt="Community service">
+
+                <div class="gallery-caption">
+                    <strong>
+                        Community Service
+                    </strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     BOOK
+===================================================== -->
+
+<section class="section book-section" id="books">
+
+    <div class="container book-grid">
+
+
+        <div class="book-cover reveal">
+
+            <small>
+                THE GREATER LIGHT
+            </small>
+
+            <h2>
+                NURTURING<br>
+                EVERY<br>
+                PERSONALITY
+            </h2>
+
+            <p>
+                Helping People Grow through Understanding
+            </p>
+
+        </div>
+
+
+        <div class="book-content reveal">
+
+            <span class="eyebrow">
+                FEATURED BOOK
+            </span>
+
+            <h2>
+                Nurturing Every Personality
+            </h2>
+
+            <p>
+                Helping People Grow through Understanding.
+            </p>
+
+            <p>
+                Discover practical insights into Introverts,
+                Extroverts and Ambiverts and learn how to
+                understand yourself and others better.
+            </p>
+
+            <div class="book-price">
+                4,500 FCFA
+            </div>
+
+            <a
+                href="https://selar.com/o8m3s87433"
+                target="_blank"
+                class="btn btn-gold">
+
+                Buy Now →
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     EDUCATION
+===================================================== -->
+
+<section class="section section-soft" id="education">
+
+    <div class="container">
+
+        <div class="section-heading center">
+
+            <span class="eyebrow">
+                LEARN & GROW
+            </span>
+
+            <h2>
+                Education & Development
+            </h2>
+
+        </div>
+
+
+        <div class="education-grid">
+
+
+            <div class="education-card reveal">
+
+                <div class="education-number">
+                    01
+                </div>
+
+                <h3>
+                    Bible Study
+                </h3>
+
+                <p>
+                    Grow deeper in God's Word and develop a
+                    stronger foundation of faith.
+                </p>
+
+            </div>
+
+
+            <div class="education-card reveal">
+
+                <div class="education-number">
+                    02
+                </div>
+
+                <h3>
+                    Children & Youth
+                </h3>
+
+                <p>
+                    Building young people with faith, character
+                    and purpose.
+                </p>
+
+            </div>
+
+
+            <div class="education-card reveal">
+
+                <div class="education-number">
+                    03
+                </div>
+
+                <h3>
+                    Skills & Seminars
+                </h3>
+
+                <p>
+                    Practical learning opportunities that equip
+                    people for life and service.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     VOLUNTEER
+===================================================== -->
+
+<section class="section volunteer" id="volunteer">
+
+    <div class="container">
+
+        <div class="section-heading center">
+
+            <span class="eyebrow" style="color:#f4df9b;">
+                SERVE WITH PURPOSE
+            </span>
+
+            <h2>
+                Your Gifts Can Make a Difference
+            </h2>
+
+            <p>
+                Join a community of people using their talents,
+                skills and passion to serve others and advance
+                God's Kingdom.
+            </p>
+
+        </div>
+
+
+        <div class="volunteer-list">
+
+            <div>✓ Media & Technical Support</div>
+
+            <div>✓ Community Outreach</div>
+
+            <div>✓ Youth & Children's Ministry</div>
+
+            <div>✓ Worship & Hospitality</div>
+
+            <div>✓ Administration</div>
+
+            <div>✓ Business</div>
+
+        </div>
+
+
+        <a href="#contact" class="btn btn-gold">
+            Join the Volunteer Team →
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     ADVERTS
+===================================================== -->
+
+<section class="section section-cream" id="adverts">
+
+    <div class="container">
+
+        <div class="section-heading center">
+
+            <span class="eyebrow">
+                STAY UPDATED
+            </span>
+
+            <h2>
+                Daily Adverts & Announcements
+            </h2>
+
+        </div>
+
+
+        <div class="advert-card reveal">
+
+            <div class="advert-icon">
+                📢
+            </div>
+
+            <h3>
+                Stay Connected
+            </h3>
+
+            <p>
+                Check here regularly for ministry announcements,
+                events, programs and important updates.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     TESTIMONIALS
+===================================================== -->
+
+<section class="section section-soft">
+
+    <div class="container">
+
+        <div class="section-heading center">
+
+            <span class="eyebrow">
+                LIVES TRANSFORMED
+            </span>
+
+            <h2>
+                What People Say
+            </h2>
+
+        </div>
+
+
+        <div class="testimonial-grid">
+
+
+            <div class="testimonial active">
+
+                <div class="stars">
+                    ★★★★★
+                </div>
+
+                <p>
+                    “God transformed my life through this ministry.”
+                </p>
+
+            </div>
+
+
+            <div class="testimonial">
+
+                <div class="stars">
+                    ★★★★★
+                </div>
+
+                <p>
+                    “A welcoming church family.”
+                </p>
+
+            </div>
+
+
+            <div class="testimonial">
+
+                <div class="stars">
+                    ★★★★★
+                </div>
+
+                <p>
+                    “Powerful teachings and worship.”
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     ONLINE SERVICES
+===================================================== -->
+
+<section class="online">
+
+    <div class="container">
+
+        <span class="eyebrow">
+            ONLINE SERVICES
+        </span>
+
+        <h2>
+            Never Miss the Word
+        </h2>
+
+        <p>
+            Join our WhatsApp channel for daily prayers,
+            encouragement, teachings and updates.
+        </p>
+
+        <a
+            href="https://whatsapp.com/channel/0029Vb8M8TTEQIaih9YWH235"
+            target="_blank"
+            class="btn btn-gold">
+
+            Join WhatsApp Channel →
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CONTACT
+===================================================== -->
+
+<section class="section" id="contact">
+
+    <div class="container">
+
+        <div class="section-heading center">
+
+            <span class="eyebrow">
+                GET IN TOUCH
+            </span>
+
+            <h2>
+                Connect With Us
+            </h2>
+
+        </div>
+
+
+        <div class="contact-grid">
+
+
+            <div class="contact-card reveal">
+
+                <div class="contact-icon">
+                    ☎
+                </div>
+
+                <h3>
+                    Phone
+                </h3>
+
+                <a href="tel:+237680540631">
+                    +237 680 540 631
+                </a>
+
+            </div>
+
+
+            <div class="contact-card reveal">
+
+                <div class="contact-icon">
+                    ✉
+                </div>
+
+                <h3>
+                    Email
+                </h3>
+
+                <a href="mailto:mopendu4christ@gmail.com">
+                    mopendu4christ@gmail.com
+                </a>
+
+            </div>
+
+
+            <div class="contact-card reveal">
+
+                <div class="contact-icon">
+                    ⌖
+                </div>
+
+                <h3>
+                    Location
+                </h3>
+
+                <p>
+                    Omnisport Bepanda<br>
+                    Douala, Cameroon
+                </p>
+
+                <small>
+                    Onsite and Online
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="socials">
+
+            <a
+                href="https://wa.me/237680540631"
+                target="_blank">
+                WhatsApp
+            </a>
+
+            <a
+                href="https://www.tiktok.com/@thegreaterlight0"
+                target="_blank">
+                TikTok
+            </a>
+
+            <a
+                href="https://whatsapp.com/channel/0029Vb8M8TTEQIaih9YWH235"
+                target="_blank">
+                WhatsApp Channel
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PRAYER REQUEST
+===================================================== -->
+
+<section class="prayer">
+
+    <div class="container">
+
+        <span class="eyebrow">
+            ✦ PRAYER REQUEST ✦
+        </span>
+
+        <h2>
+            We Would Love to Pray With You
+        </h2>
+
+        <p>
+            Share your prayer request with our ministry team.
+        </p>
+
+        <a
+            href="https://wa.me/237680540631?text=Hello%20The%20Greater%20Light,%20I%20would%20like%20to%20share%20a%20prayer%20request."
+            target="_blank"
+            class="btn btn-outline"
+            style="color:#06264a;border-color:#06264a;">
+
+            Send Prayer Request →
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="container">
+
+        <div class="footer-logo">
+            ✦ THE GREATER LIGHT
+        </div>
+
+        <p class="footer-tagline">
+            Faith • Service • Education • Community
+        </p>
+
+
+        <div class="footer-links">
+
+            <a href="#home">Home</a>
+
+            <a href="#about">Mission</a>
+
+            <a href="#preaching">Preaching</a>
+
+            <a href="#books">Books</a>
+
+            <a href="#contact">Contact</a>
+
+        </div>
+
+
+        <p class="copyright">
+            © 2026 The Greater Light. All Rights Reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<!-- =====================================================
+     FLOATING BUTTONS
+===================================================== -->
+
+<button class="back-top" id="backTop">
+    ↑
+</button>
+
+
+<a
+    href="https://wa.me/237680540631"
+    target="_blank"
+    class="whatsapp"
+    aria-label="WhatsApp">
+
+    ☏
+
+</a>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+/* =========================================================
+   LOADING SCREEN
+========================================================= */
+
+window.addEventListener("load", () => {
+
+    setTimeout(() => {
+
+        document
+            .getElementById("loader")
+            .classList.add("hide");
+
+    }, 700);
+
+});
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+const menuBtn =
+    document.getElementById("menuBtn");
+
+const navLinks =
+    document.getElementById("navLinks");
+
+
+menuBtn.addEventListener("click", () => {
+
+    navLinks.classList.toggle("open");
+
+    menuBtn.textContent =
+        navLinks.classList.contains("open")
+        ? "✕"
+        : "☰";
+
+});
+
+
+navLinks.querySelectorAll("a").forEach(link => {
+
+    link.addEventListener("click", () => {
+
+        navLinks.classList.remove("open");
+
+        menuBtn.textContent = "☰";
+
+    });
+
+});
+
+
+/* =========================================================
+   HERO IMAGE SLIDESHOW
+========================================================= */
+
+/*
+   Put your own images in the same folder and
+   change these filenames if necessary.
+*/
+
+const heroImages = [
+
+    "greater-light-community.jpg",
+    "mid (1).jpeg",
+    "mid (2).jpeg",
+    "pe.jpeg"
+
+];
+
+let heroIndex = 0;
+
+const hero =
+    document.querySelector(".hero");
+
+
+function changeHero() {
+
+    hero.style.backgroundImage =
+        `linear-gradient(
+            90deg,
+            rgba(3,25,49,.82),
+            rgba(4,37,69,.58),
+            rgba(3,24,47,.75)
+        ), url("${heroImages[heroIndex]}")`;
+
+}
+
+
+changeHero();
+
+
+setInterval(() => {
+
+    heroIndex++;
+
+    if (heroIndex >= heroImages.length) {
+        heroIndex = 0;
+    }
+
+    changeHero();
+
+}, 6500);
+
+
+/* =========================================================
+   WORD FOR YOU
+========================================================= */
+
+const words = [
+
+    {
+        title: "Fear Not",
+        text: "Casting all anxieties on Him because He cares.",
+        verse: "1 Peter 5:7"
+    },
+
+    {
+        title: "Walk in Faith",
+        text: "Trust God even when you cannot see what lies ahead.",
+        verse: "2 Corinthians 5:7"
+    },
+
+    {
+        title: "Be Strong",
+        text: "God gives strength to those who put their trust in Him.",
+        verse: "Isaiah 40:31"
+    },
+
+    {
+        title: "Shine Your Light",
+        text: "Let your life reflect the love and goodness of Christ.",
+        verse: "Matthew 5:16"
+    },
+
+    {
+        title: "Do Not Give Up",
+        text: "Keep doing what is good, because your season will come.",
+        verse: "Galatians 6:9"
+    }
+
+];
+
+let wordIndex = 0;
+
+const wordTitle =
+    document.getElementById("wordTitle");
+
+const wordText =
+    document.getElementById("wordText");
+
+const wordVerse =
+    document.getElementById("wordVerse");
+
+
+function showWord(index) {
+
+    wordTitle.style.opacity = "0";
+    wordText.style.opacity = "0";
+    wordVerse.style.opacity = "0";
+
+
+    setTimeout(() => {
+
+        wordTitle.textContent =
+            words[index].title;
+
+        wordText.textContent =
+            words[index].text;
+
+        wordVerse.textContent =
+            words[index].verse;
+
+
+        wordTitle.style.opacity = "1";
+        wordText.style.opacity = "1";
+        wordVerse.style.opacity = "1";
+
+    }, 250);
+
+}
+
+
+document
+    .getElementById("nextWord")
+    .addEventListener("click", () => {
+
+        wordIndex++;
+
+        if (wordIndex >= words.length) {
+            wordIndex = 0;
+        }
+
+        showWord(wordIndex);
+
+    });
+
+
+document
+    .getElementById("prevWord")
+    .addEventListener("click", () => {
+
+        wordIndex--;
+
+        if (wordIndex < 0) {
+            wordIndex = words.length - 1;
+        }
+
+        showWord(wordIndex);
+
+    });
+
+
+setInterval(() => {
+
+    wordIndex++;
+
+    if (wordIndex >= words.length) {
+        wordIndex = 0;
+    }
+
+    showWord(wordIndex);
+
+}, 7000);
+
+
+/* =========================================================
+   NAVBAR SCROLL EFFECT
+========================================================= */
+
+const navbar =
+    document.getElementById("navbar");
+
+
+window.addEventListener("scroll", () => {
+
+    if (window.scrollY > 50) {
+
+        navbar.classList.add("scrolled");
+
+    } else {
+
+        navbar.classList.remove("scrolled");
+
+    }
+
+});
+
+
+/* =========================================================
+   ACTIVE NAVIGATION
+========================================================= */
+
+const sections =
+    document.querySelectorAll("section[id]");
+
+const navigation =
+    document.querySelectorAll(".nav-links a");
+
+
+const observer =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    navigation.forEach(link => {
+
+                        link.classList.remove("active");
+
+                        if (
+                            link.getAttribute("href")
+                            === "#" + entry.target.id
+                        ) {
+
+                            link.classList.add("active");
+
+                        }
+
+                    });
+
+                }
+
+            });
+
+        },
+        {
+            threshold: .45
+        }
+    );
+
+
+sections.forEach(section => {
+
+    observer.observe(section);
+
+});
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const revealElements =
+    document.querySelectorAll(".reveal");
+
+
+const revealObserver =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add("visible");
+
+                    revealObserver.unobserve(
+                        entry.target
+                    );
+
+                }
+
+            });
+
+        },
+        {
+            threshold: .12
+        }
+    );
+
+
+revealElements.forEach(element => {
+
+    revealObserver.observe(element);
+
+});
+
+
+/* =========================================================
+   ANIMATED STATISTICS
+========================================================= */
+
+const stats =
+    document.querySelectorAll("[data-count]");
+
+
+const statsObserver =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                if (!entry.isIntersecting) return;
+
+                const element =
+                    entry.target;
+
+                const target =
+                    Number(
+                        element.dataset.count
+                    );
+
+                let current = 0;
+
+                const increment =
+                    Math.max(
+                        1,
+                        Math.ceil(target / 35)
+                    );
+
+
+                const counter =
+                    setInterval(() => {
+
+                        current += increment;
+
+                        if (current >= target) {
+
+                            current = target;
+
+                            clearInterval(counter);
+
+                        }
+
+                        element.textContent =
+                            current + "+";
+
+                    }, 35);
+
+
+                statsObserver.unobserve(element);
+
+            });
+
+        },
+        {
+            threshold: .7
+        }
+    );
+
+
+stats.forEach(stat => {
+
+    statsObserver.observe(stat);
+
+});
+
+
+/* =========================================================
+   TESTIMONIAL ROTATION
+========================================================= */
+
+const testimonials =
+    document.querySelectorAll(".testimonial");
+
+let testimonialIndex = 0;
+
+
+setInterval(() => {
+
+    testimonials.forEach(item => {
+
+        item.classList.remove("active");
+
+    });
+
+    testimonials[testimonialIndex]
+        .classList.add("active");
+
+
+    testimonialIndex++;
+
+    if (
+        testimonialIndex >=
+        testimonials.length
+    ) {
+
+        testimonialIndex = 0;
+
+    }
+
+}, 4500);
+
+
+/* =========================================================
+   GALLERY LIGHTBOX
+========================================================= */
+
+document
+    .querySelectorAll(".gallery-item")
+    .forEach(item => {
+
+        item.addEventListener("click", () => {
+
+            const image =
+                item.querySelector("img");
+
+            const lightbox =
+                document.createElement("div");
+
+            lightbox.className =
+                "lightbox";
+
+
+            lightbox.innerHTML = `
+
+                <span class="lightbox-close">
+                    ×
+                </span>
+
+                <img
+                    src="${image.src}"
+                    alt="${image.alt}"
+                >
+
+            `;
+
+
+            document.body.appendChild(
+                lightbox
+            );
+
+
+            document.body.style.overflow =
+                "hidden";
+
+
+            lightbox.addEventListener(
+                "click",
+                event => {
+
+                    if (
+                        event.target === lightbox ||
+                        event.target.classList.contains(
+                            "lightbox-close"
+                        )
+                    ) {
+
+                        lightbox.remove();
+
+                        document.body.style.overflow =
+                            "";
+
+                    }
+
+                }
+            );
+
+        });
+
+    });
+
+
+/* =========================================================
+   BACK TO TOP
+========================================================= */
+
+const backTop =
+    document.getElementById("backTop");
+
+
+window.addEventListener("scroll", () => {
+
+    if (window.scrollY > 500) {
+
+        backTop.classList.add("show");
+
+    } else {
+
+        backTop.classList.remove("show");
+
+    }
+
+});
+
+
+backTop.addEventListener("click", () => {
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+    });
+
+});
+
+
+/* =========================================================
+   ESCAPE KEY
+========================================================= */
+
+document.addEventListener("keydown", event => {
+
+    if (event.key === "Escape") {
+
+        navLinks.classList.remove("open");
+
+        menuBtn.textContent = "☰";
+
+        const lightbox =
+            document.querySelector(".lightbox");
+
+        if (lightbox) {
+
+            lightbox.remove();
+
+            document.body.style.overflow =
+                "";
+
+        }
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
+```
